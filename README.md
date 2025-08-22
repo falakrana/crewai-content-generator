@@ -12,7 +12,6 @@ This project is a Flask-based web application that generates content based on us
   - [Steps](#steps)
 - [Usage](#usage)
 - [File Structure](#file-structure)
-- [Future Enhancements](#future-enhancements)
 
 ## Features ✨
 *   **Content Generation**: Generate content based on a specified topic, target age group, social media platform, and desired formality.
