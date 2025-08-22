@@ -78,3 +78,5 @@ This project is a Flask-based web application that generates content based on us
 *   `search_history.json`: Stores the history of content generation requests.
 
 
+## Future enhancement
+1.  Implementing memory for each sessino by user.
