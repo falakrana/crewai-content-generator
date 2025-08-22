@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}Content Generator - Home{% endblock %}
+
+{% block extra_styles %}
+<style>
+    h1 {
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        padding: 40px;
+        margin-bottom: 30px;
+        animation: slideUp 0.5s ease-out;
+    }
+
+    form {
+        display: grid;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    input[type="text"] {
+        padding: 12px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+        background-color: #fff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 14px 28px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    .loading {
+        display: none;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .loading::after {
+        content: '';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #667eea;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #result {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        white-space: pre-wrap;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #333;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #result:empty::before {
+        content: 'Your generated content will appear here...';
+        color: #999;
+        font-style: italic;
+    }
+
+    @media (min-width: 600px) {
+        form {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        button {
+            grid-column: span 2;
+            justify-self: center;
+            width: auto;
+            min-width: 200px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>✨ AI-Powered Content Generator</h1>
+
+<div class="card">
+    <form action="/generate_content" method="POST">
+        <div class="form-group">
+            <label for="topic">Topic</label>
+            <input type="text" id="topic" name="topic" placeholder="Enter your topic..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Target Age</label>
+            <input type="text" id="age" name="age" placeholder="e.g., 18-25, 30+" required>
+        </div>
+
+        <div class="form-group">
+            <label for="socialMedia">Social Media Platform</label>
+            <input type="text" id="socialMedia" name="socialMedia" placeholder="e.g., Instagram, LinkedIn" required>
+        </div>
+
+        <div class="form-group">
+            <label for="formality">Formality Level</label>
+            <input type="text" id="formality" name="formality" placeholder="e.g., Casual, Professional" required>
+        </div>
+
+        <button type="submit">Generate Content</button>
+    </form>
+    <div class="loading">Generating content...</div>
+</div>
+
+<h2>Generated Content</h2>
+<pre id="result"></pre>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const button = e.target.querySelector('button');
+        const loading = document.querySelector('.loading');
+        const result = document.getElementById('result');
+        
+        // Show loading state
+        button.disabled = true;
+        button.textContent = 'Generating...';
+        loading.style.display = 'block';
+        result.textContent = '';
+        
+        try {
+            const formData = new FormData(e.target);
+            const response = await fetch('/generate_content', {
+                method: 'POST',
+                body: formData
+            });
+            const text = await response.text();
+            result.textContent = text;
+        } catch (error) {
+            result.textContent = 'Error generating content. Please try again.';
+        } finally {
+            // Reset button state
+            button.disabled = false;
+            button.textContent = 'Generate Content';
+            loading.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

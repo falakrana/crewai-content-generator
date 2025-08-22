@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}About - Content Generator{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .hero {
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero h1 {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .content-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        padding: 40px;
+        margin-bottom: 30px;
+        animation: slideUp 0.6s ease-out;
+        animation-fill-mode: both;
+    }
+
+    .content-section:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .content-section:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .content-section:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    .content-section h2 {
+        color: #667eea;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .content-section h3 {
+        color: #764ba2;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+
+    .content-section p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .feature-card {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .feature-card h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .tech-badge {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .cta-section h2 {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 12px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .content-section {
+            padding: 25px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>About Content Generator</h1>
+    <p>Revolutionizing content creation with the power of AI and multi-agent collaboration</p>
+</div>
+
+<div class="content-section">
+    <h2>🚀 What is Content Generator?</h2>
+    <p>Content Generator is an innovative AI-powered platform that leverages the CrewAI framework to create tailored content for various social media platforms. By utilizing a multi-agent system, we ensure that every piece of content is thoroughly researched, thoughtfully crafted, and perfectly optimized for your target audience.</p>
+    
+    <p>Our system employs three specialized AI agents working in harmony to deliver exceptional results: a Content Gatherer for research, a Content Thinker for strategy, and a Content Writer for execution.</p>
+</div>
+
+<div class="content-section">
+    <h2>✨ Key Features</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h4>Targeted Content</h4>
+            <p>Create content specifically tailored to your target age group and platform</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h4>Multi-Agent AI</h4>
+            <p>Three specialized agents collaborate to produce high-quality content</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h4>Fast Generation</h4>
+            <p>Get professional content in seconds, not hours</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h4>Platform Optimized</h4>
+            <p>Content formatted perfectly for each social media platform</p>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>🔧 How It Works</h2>
+    
+    <h3>1. Content Gatherer Agent</h3>
+    <p>This agent researches and collects relevant information about your topic, ensuring that the content is based on accurate and up-to-date information.</p>
+    
+    <h3>2. Content Thinker Agent</h3>
+    <p>The strategist of the team, this agent analyzes the gathered information and develops a content strategy that aligns with your target audience and platform requirements.</p>
+    
+    <h3>3. Content Writer Agent</h3>
+    <p>The final agent transforms the strategy into engaging, platform-specific content that resonates with your audience and drives engagement.</p>
+</div>
+
+<div class="content-section">
+    <h2>💻 Technology Stack</h2>
+    <p>Built with cutting-edge technologies to ensure reliability and performance:</p>
+    <div class="tech-stack">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">CrewAI</span>
+        <span class="tech-badge">AI Agents</span>
+        <span class="tech-badge">Modern Web Technologies</span>
+    </div>
+</div>
+
+<div class="cta-section">
+    <h2>Ready to Generate Amazing Content?</h2>
+    <p>Start creating engaging, AI-powered content for your social media platforms today!</p>
+    <a href="/" class="cta-button">Try Content Generator</a>
+</div>
+{% endblock %}
