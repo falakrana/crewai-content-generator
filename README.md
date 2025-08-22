@@ -1,5 +1,5 @@
 # Content Generator 
-
+![Extension Screenshot](/image.png) 
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 ## Project Description
