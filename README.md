@@ -1,14 +1,25 @@
-# Content Generator
+# Content Generator 
+
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 ## Project Description
 This project is a Flask-based web application that generates content based on user input. It utilizes a CrewAI framework to orchestrate different AI agents (content gatherer, thinker, and writer) to produce tailored content. The application now also stores a history of all content generation requests.
 
-## Features
+## Table of Contents
+- [Features](#features)
+- [Setup and Installation](#setup-and-installation)
+  - [Prerequisites](#prerequisites)
+  - [Steps](#steps)
+- [Usage](#usage)
+- [File Structure](#file-structure)
+- [Future Enhancements](#future-enhancements)
+
+## Features ✨
 *   **Content Generation**: Generate content based on a specified topic, target age group, social media platform, and desired formality.
 *   **AI-Powered Agents**: Leverages a multi-agent system (CrewAI) for intelligent content creation.
 *   **Search History**: Automatically stores a detailed history of all content generation requests, including input parameters and timestamps, in a `search_history.json` file.
 
-## Setup and Installation
+## Setup and Installation 🚀
 
 ### Prerequisites
 *   Python 3.10+
@@ -48,8 +59,8 @@ This project is a Flask-based web application that generates content based on us
     ```
     The application will typically run on `http://127.0.0.1:5000/`.
 
-## Usage
-1.  Navigate to the application in your web browser (e.g., `http://127.0.0.1:5000/`).
+## Usage 💡
+1.  Navigate to the application in your web browser (e.g., `http://127.00.0.1:5000/`).
 2.  Fill out the content generation form on the `index.html` page, providing details such as:
     *   **Topic**: The subject for content generation.
     *   **Age**: The target age group for the content.
@@ -59,7 +70,7 @@ This project is a Flask-based web application that generates content based on us
 4.  The generated content will be displayed on the page.
 5.  All search requests will be logged in `search_history.json`.
 
-## File Structure
+## File Structure 📂
 *   `app.py`: The main Flask application, handling routes and integrating with CrewAI.
 *   `agent.py`: Defines the AI agents used for content generation.
 *   `task.py`: Defines the tasks assigned to the AI agents.
@@ -67,7 +78,7 @@ This project is a Flask-based web application that generates content based on us
 *   `templates/`: Contains HTML templates (`index.html`, `about.html`, `base.html`).
 *   `search_history.json`: Stores the history of content generation requests.
 
-## Future Enhancements
+## Future Enhancements 📈
 *   Display search history on a dedicated web page.
 *   Implement user authentication.
 *   Add options for content customization (e.g., length, keywords).
