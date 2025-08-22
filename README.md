@@ -78,8 +78,4 @@ This project is a Flask-based web application that generates content based on us
 *   `templates/`: Contains HTML templates (`index.html`, `about.html`, `base.html`).
 *   `search_history.json`: Stores the history of content generation requests.
 
-## Future Enhancements 📈
-*   Display search history on a dedicated web page.
-*   Implement user authentication.
-*   Add options for content customization (e.g., length, keywords).
-*   Integrate with a more robust database for search history storage.
+
